@@ -678,3 +678,24 @@ var Custombox = (function ( w, d, h ) {
         //,test: _private
     };
 })( window, document, document.documentElement );
+
+function open_custombox()
+{
+    var modal_settings = $(this).data("modal");
+    if (typeof(modal_settings) === 'string')
+    {
+        Custombox.open({
+            target: modal_settings
+        });
+    }
+    else if(typeof(modal_settings) === 'object')
+    {
+        Custombox.open(modal_settings);
+    }
+}
+
+var selection = document.querySelectorAll("[data-trigger='modal']");
+for (var i = 0; i < selection.length; i++)
+{
+    selection[i].addEventListener("click", open_custombox);
+}
